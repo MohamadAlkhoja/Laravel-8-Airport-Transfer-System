@@ -20,7 +20,11 @@ Route::get('/home', function () {
 
 Route::get('/', [HomeeController::class, 'index']);
 
-Route::get('/admin', [\App\Http\Controllers\Admin\HomeController::class, 'index'])->name('adminhome');
+Route::get('/admin', [\App\Http\Controllers\Admin\HomeController::class, 'index'])->name('admin_home')->middleware('auth');
+
+Route::get('/admin/login', [HomeeController::class, 'login'])->name('admin_login');
+Route::post('/admin/logincheck', [HomeeController::class, 'logincheck'])->name('admin_logincheck');
+Route::get('/admin/logout', [HomeeController::class, 'logout'])->name('admin_logout');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
