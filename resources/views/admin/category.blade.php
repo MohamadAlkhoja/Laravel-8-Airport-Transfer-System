@@ -63,7 +63,7 @@
                                             <td>{{ $rs->parent_id }}</td>
                                             <td>{{ $rs->title }}</td>
                                             <td class="center">{{ $rs->status }}</td>
-                                            <td class="center"></td>
+                                            <td class="center"><a href="{{route('admin_category_edit', ['id'=> $rs->id])}}"> Edit</a></td>
                                             <td class="center"><a href="{{route('admin_category_delete', ['id'=> $rs->id])}}" onclick="return confirm('Delete ! Are You Sure?')">Delete</a></td>
                                         </tr>
                                         @endforeach
