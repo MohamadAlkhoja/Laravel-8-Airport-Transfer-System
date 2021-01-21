@@ -26,11 +26,17 @@
         <div class="wrapper wrapper-content animated fadeInRight">
             <div class="ibox-content p-xl">
 
-
-
-
-
-                    <h3 style="font-weight: bold">Category List</h3>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h3 style="font-weight: bold">Category List</h3>
+                    </div>
+                    <div class="col-sm-6 text-right">
+                        <a href="{{route('admin_category_add')}}" class="btn btn-primary" style="width: 250px"><i class="fa fa-plus"></i> &nbsp Add Category</a>
+                    </div>
+                </div>
+                <div>
+                    <p></p>
+                </div>
 
 
                     <div class="row">
@@ -58,7 +64,7 @@
                                             <td>{{ $rs->title }}</td>
                                             <td class="center">{{ $rs->status }}</td>
                                             <td class="center"></td>
-                                            <td class="center"></td>
+                                            <td class="center"><a href="{{route('admin_category_delete', ['id'=> $rs->id])}}" onclick="return confirm('Delete ! Are You Sure?')">Delete</a></td>
                                         </tr>
                                         @endforeach
 
@@ -71,9 +77,7 @@
                         </div>
                     </div>
 
-                <div class="text-right">
-                    <button class="btn btn-primary"><i class="fa fa-dollar"></i> Make A Payment</button>
-                </div>
+
                 </div><!-- /table-responsive -->
 
 
@@ -83,7 +87,6 @@
             </div>
         </div>
     </div>
-
 
 
 @endsection
