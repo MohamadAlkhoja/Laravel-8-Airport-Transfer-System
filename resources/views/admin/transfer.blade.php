@@ -55,6 +55,7 @@
                                             <th>KM Price</th>
                                             <th>Capacity</th>
                                             <th>Image</th>
+                                            <th>Gallery</th>
                                             <th>Status</th>
                                             <th style="" colspan="2">&nbsp&nbsp&nbsp&nbsp Action</th>
                                         </tr>
@@ -70,12 +71,15 @@
                                             <td class="center">{{ $rs->capacity }}</td>
                                             <td class="center">
                                                 @if($rs->image)
-                                                    <img src ="{{ Storage::url($rs->image) }}" height="30">
+                                                    <img src ="{{ Storage::url($rs->image) }}" height="35" width="50">
                                                 @endif
                                             </td>
+                                            <td class="center"><a href="{{route('admin_image_add',['transfer_id'=> $rs->id])}}" onclick="return !window.open(this.href, '','top=50 left=100 width=1100,height=700')">
+                                                    <img src="{{asset('assets/admindir/img/gallery.png')}}" style="height: 35px; width: 40px"></a>
+                                            </td>
                                             <td class="center">{{ $rs->status }}</td>
-                                            <td class="center"><a href="{{route('admin_transfer_edit', ['id'=> $rs->id])}}"><ion-icon name="create-outline"></ion-icon>Edit</a></td>
-                                            <td class="center"><a href="{{route('admin_transfer_delete', ['id'=> $rs->id])}}" onclick="return confirm('Delete ! Are You Sure?')"><ion-icon name="trash-outline"></ion-icon>Delete</a></td>
+                                            <td class="center"><a href="{{route('admin_transfer_edit', ['id'=> $rs->id])}}"><img src="{{asset('assets/admindir/img/edit2.png')}}" style="height: 25px; width: 25px"></a></td>
+                                            <td class="center"><a href="{{route('admin_transfer_delete', ['id'=> $rs->id])}}" onclick="return confirm('Delete ! Are You Sure?')"><img src="{{asset('assets/admindir/img/delete.png')}}" style="height: 25px; width: 25px"></a></td>
                                         </tr>
                                         @endforeach
 

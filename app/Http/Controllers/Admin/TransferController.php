@@ -53,7 +53,7 @@ class TransferController extends Controller
         $data->baseprice= $request->input('baseprice');
         $data->kmprice= $request->input('kmprice');
         $data->capacity= $request->input('capacity');
-        $data->image= storage::putFile('images', $request->file('image')) ;
+        $data->image= Storage::putFile('images', $request->file('image')) ;
         $data->save();
 
         return redirect()->route('admin_transfers');
@@ -103,6 +103,7 @@ class TransferController extends Controller
         $data->baseprice= $request->input('baseprice');
         $data->kmprice= $request->input('kmprice');
         $data->capacity= $request->input('capacity');
+        $data->image= Storage::putFile('images', $request->file('image')) ;
         $data->save();
 
         return redirect()->route('admin_transfers');

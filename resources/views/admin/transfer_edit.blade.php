@@ -32,7 +32,7 @@
                         <div class="ibox ">
 
                             <div class="ibox-content">
-                                <form action="{{route('admin_transfer_update',['id'=>$data->id])}}" method="post">
+                                <form action="{{route('admin_transfer_update',['id'=>$data->id])}}" method="post" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group  row"><label class="col-sm-2 col-form-label">Parent</label>
 
@@ -77,7 +77,10 @@
                                     </div>
                                     <div class="hr-line-dashed"></div>
                                     <div class="form-group row"><label class="col-sm-2 col-form-label">Image</label>
-                                        <div class="col-sm-10"><input type="number" value="{{$data->capacity}}" name="capacity" class="form-control">
+                                        <div class="col-sm-10"><input type="file" value="{{$data->image}}" name="image" class="form-control">
+                                            @if($data->image)
+                                                <img src ="{{ Storage::url($data->image) }}" height="60" alt="">
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="hr-line-dashed"></div>
