@@ -1,7 +1,7 @@
 @extends('layouts.home')
 
-@section('title', 'Laravel Airport Transfer System')
+@section('title', $setting->title)
 @section('description')
-    transport from and to airport safety....
+    {{$setting->description}}
 @endsection
-@section('keywords','airport','havalimani', 'VIP')
+@section('keywords',$setting->keywords)

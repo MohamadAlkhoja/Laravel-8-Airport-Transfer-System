@@ -1810,16 +1810,16 @@
         },
         {
             "name": "livewire/livewire",
-            "version": "v2.3.9",
+            "version": "v2.3.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/livewire/livewire.git",
-                "reference": "ee689b019eb8b4e3cb9b889c2508f21eedd7c547"
+                "reference": "8f027e9bc5ad1f08f0c900244e6fdb9966f7a287"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/livewire/livewire/zipball/ee689b019eb8b4e3cb9b889c2508f21eedd7c547",
-                "reference": "ee689b019eb8b4e3cb9b889c2508f21eedd7c547",
+                "url": "https://api.github.com/repos/livewire/livewire/zipball/8f027e9bc5ad1f08f0c900244e6fdb9966f7a287",
+                "reference": "8f027e9bc5ad1f08f0c900244e6fdb9966f7a287",
                 "shasum": ""
             },
             "require": {
@@ -1836,8 +1836,7 @@
                 "orchestra/testbench": "^5.0|^6.0",
                 "orchestra/testbench-dusk": "^5.2|^6.0",
                 "phpunit/phpunit": "^8.4|^9.0",
-                "psy/psysh": "@stable",
-                "spatie/laravel-ray": "^1.9"
+                "psy/psysh": "@stable"
             },
             "type": "library",
             "extra": {
@@ -1871,7 +1870,7 @@
             "description": "A front-end framework for Laravel.",
             "support": {
                 "issues": "https://github.com/livewire/livewire/issues",
-                "source": "https://github.com/livewire/livewire/tree/v2.3.9"
+                "source": "https://github.com/livewire/livewire/tree/v2.3.16"
             },
             "funding": [
                 {
@@ -1879,7 +1878,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-02-02T16:34:35+00:00"
+            "time": "2021-02-05T15:05:19+00:00"
         },
         {
             "name": "mobiledetect/mobiledetectlib",

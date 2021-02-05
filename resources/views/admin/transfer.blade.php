@@ -64,7 +64,7 @@
                                         @foreach($datalist as $rs)
                                         <tr class="gradeX">
                                             <td>{{ $rs->id }}</td>
-                                            <td>{{ $rs->category_id }}</td>
+                                            <td>{{ \App\Http\Controllers\Admin\CategoryController::getParentsTree($rs->category, $rs->category->title )}}</td>
                                             <td>{{ $rs->title }}</td>
                                             <td class="center">{{ $rs->baseprice }}</td>
                                             <td class="center">{{ $rs->kmprice }}</td>
@@ -79,7 +79,8 @@
                                             </td>
                                             <td class="center">{{ $rs->status }}</td>
                                             <td class="center"><a href="{{route('admin_transfer_edit', ['id'=> $rs->id])}}"><img src="{{asset('assets/admindir/img/edit2.png')}}" style="height: 25px; width: 25px"></a></td>
-                                            <td class="center"><a href="{{route('admin_transfer_delete', ['id'=> $rs->id])}}" onclick="return confirm('Delete ! Are You Sure?')"><img src="{{asset('assets/admindir/img/delete.png')}}" style="height: 25px; width: 25px"></a></td>
+                                            <td class="center"><a href="{{route('admin_transfer_delete', ['id'=> $rs->id])}}" onclick="return confirm('Delete ! Are You Sure?')">
+                                                    <img src="{{asset('assets/admindir/img/delete.png')}}" style="height: 25px; width: 25px"></a></td>
                                         </tr>
                                         @endforeach
 

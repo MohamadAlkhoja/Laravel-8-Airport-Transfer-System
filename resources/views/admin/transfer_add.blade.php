@@ -34,11 +34,11 @@
                             <div class="ibox-content">
                                 <form action="{{route('admin_transfer_store')}}" method="post" enctype="multipart/form-data">
                                     @csrf
-                                    <div class="form-group  row"><label class="col-sm-2 col-form-label">Parent</label>
+                                    <div class="form-group  row"><label class="col-sm-2 col-form-label">Category</label>
 
                                         <div class="col-sm-10"><select class="form-control m-b" name="category_id">
                                                 @foreach($datalist as $rs)
-                                                <option value="{{ $rs->id }}">{{ $rs->title }}</option>
+                                                    <option value="{{$rs->id}}">{{ \App\Http\Controllers\Admin\CategoryController::getParentsTree($rs,$rs->title) }}</option>
                                                 @endforeach
                                             </select>
 

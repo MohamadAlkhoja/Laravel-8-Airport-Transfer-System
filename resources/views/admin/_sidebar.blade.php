@@ -22,13 +22,13 @@
             </li>
 
             <li>
-                <a href="{{route('admin_category')}}"><i class="fa fa-diamond"></i> <span class="nav-label">Category</span></a>
+                <a href="{{route('admin_category')}}"><i class="fa fa-list"></i> <span class="nav-label">Category</span></a>
             </li>
             <li>
-                <a href="{{route('admin_transfers')}}"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Transfers</span></a>
+                <a href="{{route('admin_transfers')}}"><i class="fa fa-globe"></i> <span class="nav-label">Transfers</span></a>
             </li>
             <li>
-                <a href="mailbox.html"><i class="fa fa-envelope"></i> <span class="nav-label">Mailbox </span></a>
+                <a href="{{route('admin_setting')}}"><i class="fa fa-cog"></i> <span class="nav-label">Settings </span></a>
             </li>
             <li>
                 <a href="metrics.html"><i class="fa fa-pie-chart"></i> <span class="nav-label">Metrics</span>  </a>

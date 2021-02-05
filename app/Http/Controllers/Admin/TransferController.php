@@ -16,6 +16,8 @@ class TransferController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
     public function index()
     {
         $datalist = Transfer::all();
@@ -30,7 +32,7 @@ class TransferController extends Controller
      */
     public function create()
     {
-        $datalist = Category::all();
+        $datalist = Category::with('children')->get();
         return view('admin.transfer_add', ['datalist'=>$datalist]);
     }
 
@@ -80,7 +82,7 @@ class TransferController extends Controller
     {
         //
         $data = Transfer::find($id);
-        $datalist = Category::all();
+        $datalist = Category::with('children')->get();
         return view('admin.transfer_edit',['data' => $data, 'datalist'=>$datalist]);
     }
 
@@ -103,7 +105,9 @@ class TransferController extends Controller
         $data->baseprice= $request->input('baseprice');
         $data->kmprice= $request->input('kmprice');
         $data->capacity= $request->input('capacity');
-        $data->image= Storage::putFile('images', $request->file('image')) ;
+        if ($request->file('image')!=null) {
+            $data->image = Storage::putFile('images', $request->file('image'));
+        }
         $data->save();
 
         return redirect()->route('admin_transfers');

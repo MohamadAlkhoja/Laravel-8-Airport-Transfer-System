@@ -19,6 +19,11 @@ Route::get('/home', function () {
 });
 
 Route::get('/', [HomeeController::class, 'index']);
+Route::get('/home', [HomeeController::class, 'index'])->name('homepage');
+Route::get('/aboutus', [HomeeController::class, 'aboutus'])->name('aboutus');
+Route::get('/references', [HomeeController::class, 'references'])->name('references');
+Route::get('/faq', [HomeeController::class, 'faq'])->name('faq');
+Route::get('/contact', [HomeeController::class, 'contact'])->name('contact');
 
 Route::middleware('auth')->prefix('admin')->group(function(){
 
@@ -44,7 +49,7 @@ Route::middleware('auth')->prefix('admin')->group(function(){
         Route::get('show', [\App\Http\Controllers\Admin\TransferController::class, 'show'])->name('admin_transfer_show');
     });
 
-    #Transfer Image
+    #Transfer Image Gallery
     Route::prefix('image')->group(function (){
 
         Route::get('/create/{transfer_id}', [\App\Http\Controllers\Admin\ImageController::class, 'create'])->name('admin_image_add');
@@ -52,6 +57,10 @@ Route::middleware('auth')->prefix('admin')->group(function(){
         Route::get('delete/{id}/{transfer_id}', [\App\Http\Controllers\Admin\ImageController::class, 'destroy'])->name('admin_image_delete');
         Route::get('show', [\App\Http\Controllers\Admin\ImageController::class, 'show'])->name('admin_image_show');
     });
+
+    #Setting
+    Route::get('setting', [\App\Http\Controllers\Admin\SettingController::class, 'index'])->name('admin_setting');
+    Route::post('setting/update', [\App\Http\Controllers\Admin\SettingController::class, 'update'])->name('admin_setting_update');
 
 });
 
