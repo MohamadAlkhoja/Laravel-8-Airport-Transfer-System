@@ -1,3 +1,39 @@
+<style>
+
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        visibility: visible;
+        z-index: 100;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    }
+
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown-content a:hover {background-color: #f1f1f1}
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .dropdown:hover .dropbtn {
+        background-color: #3e8e41;
+    }
+</style>
+
 <!-- Page-->
     <!-- Page Header-->
 <header class="section page-header">
@@ -13,7 +49,8 @@
                     <!-- RD Navbar Toggle-->
                     <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
                     <!-- RD Navbar Brand-->
-                    <div class="rd-navbar-brand"><a class="brand-name" href="{{route('homepage')}}"><img class="logo-default" src="{{ asset('assets/images/logo-default-208x46.png') }}" alt="" width="208" height="46"/>
+                    <div class="rd-navbar-brand"><a class="brand-name" href="{{route('homepage')}}">
+                            <img class="logo-default" src="{{ asset('assets/images/logo-default-208x46.png') }}" alt="" width="208" height="46"/>
                             <img class="logo-inverse" src="{{ asset('assets/images/logo-inverse-208x46.png') }}" alt="" width="208" height="46"/></a></div>
                 </div>
                 <div class="rd-navbar-aside-center">
@@ -21,6 +58,17 @@
                         <!-- RD Navbar Nav-->
                         <ul class="rd-navbar-nav">
                             <li class="active"><a href="{{route('homepage')}}">Home</a>
+                            </li>
+                            @php
+                                $parentCategories=\App\Http\Controllers\HomeeController::categoryList();
+                            @endphp
+
+                            <li class="dropdown"><a href="#">Our Transfers</a>
+                                <ul class="dropdown-content">
+                                    @foreach($parentCategories as $rs)
+                                        <li><a href="{{route('categorytransfers',['id'=>$rs->id,'slug'=>$rs->title])}}" title="Service List">{{$rs->title}}</a></li>
+                                    @endforeach
+                                </ul>
                             </li>
                             <li><a href="{{route('aboutus')}}">About Us</a>
                             </li>
@@ -32,11 +80,12 @@
                     </div>
                 </div>
                 @auth
-                    <div class="rd-navbar-aside-right"><li class="has-sub"><a class="button button-sm button-secondary button-nina" href="#" title="Blog ">{{Auth::user()->name}}</a><a class="button button-sm button-nina" href="{{route('admin_logout')}}">Logout</a>
+                    <div class="rd-navbar-aside-right"><li class="has-sub"><a class="button button-sm button-secondary button-nina" href="{{route('myprofile')}}" >{{Auth::user()->name}}</a>
+                            <a class="button button-sm button-nina" href="{{route('logout')}}">Logout</a>
 
                     </li></div>
                 @else
-                    <div class="rd-navbar-aside-right"><li class="has-sub"><a class="button button-sm button-secondary button-nina" href="{{route('admin_login')}}" title="Blog ">LOGIN</a> <a class="button button-sm button-secondary button-nina" href="/register" >Register</a>
+                    <div class="rd-navbar-aside-right"><li class="has-sub"><a class="button button-sm button-secondary button-nina" href="{{route('login')}}" title="Blog ">LOGIN</a> <a class="button button-sm button-secondary button-nina" href="/register" >Register</a>
 
 
                     </li></div>

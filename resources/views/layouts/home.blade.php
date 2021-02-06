@@ -27,10 +27,8 @@
 <div class="page">
     @include('home._header')
 
-    @include('home._reservation')
-    @include('home._services')
-
-
+    @section('content')
+    @show
 
     @include('home._footer')
     @yield('footerjs')

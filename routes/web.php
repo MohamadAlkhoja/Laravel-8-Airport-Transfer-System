@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeeController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,6 +25,7 @@ Route::get('/aboutus', [HomeeController::class, 'aboutus'])->name('aboutus');
 Route::get('/references', [HomeeController::class, 'references'])->name('references');
 Route::get('/faq', [HomeeController::class, 'faq'])->name('faq');
 Route::get('/contact', [HomeeController::class, 'contact'])->name('contact');
+Route::get('/categorytransfers/{id}/{slug}', [HomeeController::class, 'categorytransfers'])->name('categorytransfers');
 
 Route::middleware('auth')->prefix('admin')->group(function(){
 
@@ -63,11 +65,20 @@ Route::middleware('auth')->prefix('admin')->group(function(){
     Route::post('setting/update', [\App\Http\Controllers\Admin\SettingController::class, 'update'])->name('admin_setting_update');
 
 });
+Route::middleware('auth')->prefix('myaccount')->namespace('myaccount')->group(function()
+{
+    Route::get('/', [UserController::class, 'index'])->name('myprofile');
+});
 
+Route::middleware('auth')->prefix('user')->namespace('user')->group(function () {
+
+    Route::get('/profile', [UserController::class, 'index'])->name('userprofile');
+});
 
 Route::get('/admin/login', [HomeeController::class, 'login'])->name('admin_login');
 Route::post('/admin/logincheck', [HomeeController::class, 'logincheck'])->name('admin_logincheck');
 Route::get('/admin/logout', [HomeeController::class, 'logout'])->name('admin_logout');
+Route::get('/logout',[HomeeController::class,'logout'])->name('logout');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

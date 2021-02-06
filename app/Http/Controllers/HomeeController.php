@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Setting;
+use App\Models\Transfer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -23,7 +24,7 @@ class HomeeController extends Controller
     public  function  index()
     {
         $setting=Setting::first();
-        return view('home.index',['setting'=>$setting]);
+        return view('home.index',['setting'=>$setting, 'page'=>'home']);
     }
 
     public function aboutus()
@@ -41,6 +42,14 @@ class HomeeController extends Controller
     public function faq()
     {
         return view('home.about');
+    }
+    public function categorytransfers($id,$slug){
+        $setting=Setting::first();
+        $datalist=Transfer::where('category_id',$id)->get();
+        $data=Category::find($id);
+
+        return view('home.category_services',['data'=>$data,'datalist'=>$datalist,'setting'=>$setting]);
+
     }
 
     public  function  login()

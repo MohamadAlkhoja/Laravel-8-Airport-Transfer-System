@@ -7,7 +7,13 @@
 @section('keywords',$setting->keywords)
 
 @section('content')
-    @include('home._reservation')
-    @include('home._services')
+
+    <section class="section section-variant-1 bg-default novi-background bg-cover">
+        <div class="container container-wide">
+
+        </div>
+    </section>
 
 @endsection
+
+
