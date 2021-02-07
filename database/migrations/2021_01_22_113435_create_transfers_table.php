@@ -23,6 +23,7 @@ class CreateTransfersTable extends Migration
             $table->text('detail')->nullable();
             $table->float('baseprice')->nullable();
             $table->float('kmprice')->nullable();
+            $table->string('slug',100)->nullable();
             $table->integer('capacity')->nullable();
             $table->string('status', 5)->nullable()->default('False');
             $table->timestamps();

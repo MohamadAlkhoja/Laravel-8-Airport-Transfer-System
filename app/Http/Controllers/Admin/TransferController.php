@@ -55,6 +55,7 @@ class TransferController extends Controller
         $data->baseprice= $request->input('baseprice');
         $data->kmprice= $request->input('kmprice');
         $data->capacity= $request->input('capacity');
+        $data->slug= $request->input('slug');
         $data->image= Storage::putFile('images', $request->file('image')) ;
         $data->save();
 
@@ -105,6 +106,7 @@ class TransferController extends Controller
         $data->baseprice= $request->input('baseprice');
         $data->kmprice= $request->input('kmprice');
         $data->capacity= $request->input('capacity');
+        $data->slug= $request->input('slug');
         if ($request->file('image')!=null) {
             $data->image = Storage::putFile('images', $request->file('image'));
         }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Image;
 use App\Models\Message;
 use App\Models\Setting;
 use App\Models\Transfer;
@@ -25,7 +26,25 @@ class HomeeController extends Controller
     public  function  index()
     {
         $setting=Setting::first();
-        return view('home.index',['setting'=>$setting, 'page'=>'home']);
+        $slider=Transfer::select('id','title','image','slug','description')->limit(4)->get();
+
+        $data=[
+            'setting'=>$setting,
+            'slider'=>$slider,
+            'page'=>'home'
+
+        ];
+
+        return view('home.index',$data);
+    }
+    public function transfer($id,$slug){
+        $setting=Setting::first();
+        $data=Transfer::find($id);
+        $picked=Transfer::select('id','title','image','slug')->limit(6)->inRandomOrder()->get();
+        $reviews=Transfer::where('transfer_id',$id)->get();
+        $datalist=Image::where('transfer_id',$id)->get();
+        return view('home.transfer_detail',['setting'=>$setting,'picked'=>$picked,'data'=>$data,'datalist'=>$datalist,'reviews'=>$reviews]);
+
     }
 
     public function aboutus()

@@ -26,6 +26,7 @@ Route::get('/references', [HomeeController::class, 'references'])->name('referen
 Route::get('/faq', [HomeeController::class, 'faq'])->name('faq');
 Route::get('/contact', [HomeeController::class, 'contact'])->name('contact');
 Route::post('/sendmessage', [HomeeController::class, 'sendmessage'])->name('sendmessage');
+Route::get('/transfer/{id}/{slug}', [HomeeController::class, 'transfer'])->name('transfer');
 Route::get('/categorytransfers/{id}/{slug}', [HomeeController::class, 'categorytransfers'])->name('categorytransfers');
 
 Route::middleware('auth')->prefix('admin')->group(function(){

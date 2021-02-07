@@ -77,6 +77,11 @@
                                         </div>
                                     </div>
                                     <div class="hr-line-dashed"></div>
+                                    <div class="form-group row"><label class="col-sm-2 col-form-label">Slug</label>
+                                        <div class="col-sm-10"><input type="text" value="{{$data->slug}}" name="slug" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="hr-line-dashed"></div>
                                     <div class="form-group row"><label class="col-sm-2 col-form-label">Image</label>
                                         <div class="col-sm-10"><input type="file" name="image" class="form-control">
                                             @if($data->image)
