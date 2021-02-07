@@ -31,6 +31,9 @@
                 <a href="{{route('admin_setting')}}"><i class="fa fa-cog"></i> <span class="nav-label">Settings </span></a>
             </li>
             <li>
+                <a href="{{route('admin_message')}}"><i class="fa fa-envelope"></i> <span class="nav-label">Contact Message </span></a>
+            </li>
+            <li>
                 <a href="metrics.html"><i class="fa fa-pie-chart"></i> <span class="nav-label">Metrics</span>  </a>
             </li>
             <li>

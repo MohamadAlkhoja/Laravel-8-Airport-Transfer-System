@@ -25,6 +25,7 @@ Route::get('/aboutus', [HomeeController::class, 'aboutus'])->name('aboutus');
 Route::get('/references', [HomeeController::class, 'references'])->name('references');
 Route::get('/faq', [HomeeController::class, 'faq'])->name('faq');
 Route::get('/contact', [HomeeController::class, 'contact'])->name('contact');
+Route::post('/sendmessage', [HomeeController::class, 'sendmessage'])->name('sendmessage');
 Route::get('/categorytransfers/{id}/{slug}', [HomeeController::class, 'categorytransfers'])->name('categorytransfers');
 
 Route::middleware('auth')->prefix('admin')->group(function(){
@@ -49,6 +50,15 @@ Route::middleware('auth')->prefix('admin')->group(function(){
         Route::post('update/{id}', [\App\Http\Controllers\Admin\TransferController::class, 'update'])->name('admin_transfer_update');
         Route::get('delete/{id}', [\App\Http\Controllers\Admin\TransferController::class, 'destroy'])->name('admin_transfer_delete');
         Route::get('show', [\App\Http\Controllers\Admin\TransferController::class, 'show'])->name('admin_transfer_show');
+    });
+
+    Route::prefix('messages')->group(function () {
+        Route::get('/', [\App\Http\Controllers\Admin\MessageController::class, 'index'])->name('admin_message');
+        Route::get('edit/{id}', [\App\Http\Controllers\Admin\MessageController::class, 'edit'])->name('admin_message_edit');
+        Route::post('update/{id}', [\App\Http\Controllers\Admin\MessageController::class, 'update'])->name('admin_message_update');
+        Route::get('delete/{id}', [\App\Http\Controllers\Admin\MessageController::class, 'destroy'])->name('admin_message_delete');
+        Route::get('show', [\App\Http\Controllers\Admin\MessageController::class, 'show'])->name('admin_message_show');
+
     });
 
     #Transfer Image Gallery

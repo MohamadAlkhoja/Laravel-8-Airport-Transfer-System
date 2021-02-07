@@ -74,7 +74,7 @@
                             </li>
                             <li><a href="{{route('contact')}}">Contacts</a>
                             </li>
-                            <li><a href="{{route('references')}}">Typography</a>
+                            <li><a href="{{route('references')}}">References</a>
                             </li>
                         </ul>
                     </div>
